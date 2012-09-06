@@ -1,0 +1,386 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4DA7D69615F942AD00C25ABA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA7D69515F942AD00C25ABA /* Cocoa.framework */; };
+		4DA7D6A015F942AD00C25ABA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4DA7D69E15F942AD00C25ABA /* InfoPlist.strings */; };
+		4DA7D6A815F942DD00C25ABA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA7D6A715F942DD00C25ABA /* WebKit.framework */; };
+		4DA7D6AA15F942E700C25ABA /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA7D6A915F942E700C25ABA /* libicucore.dylib */; };
+		4DA7D6AD15F9431A00C25ABA /* RegexPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA7D6AC15F9431A00C25ABA /* RegexPlugin.m */; };
+		4DA7D6C015F9433E00C25ABA /* JDMatchValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA7D6AF15F9433E00C25ABA /* JDMatchValueTransformer.m */; };
+		4DA7D6C115F9433E00C25ABA /* JDOutlineDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA7D6B115F9433E00C25ABA /* JDOutlineDataCell.m */; };
+		4DA7D6C215F9433E00C25ABA /* JDOutlineHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA7D6B315F9433E00C25ABA /* JDOutlineHeaderCell.m */; };
+		4DA7D6C315F9433E00C25ABA /* JDOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA7D6B515F9433E00C25ABA /* JDOutlineView.m */; };
+		4DA7D6C415F9433E00C25ABA /* JDRegexHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA7D6B715F9433E00C25ABA /* JDRegexHelpViewController.m */; };
+		4DA7D6C515F9433E00C25ABA /* JDStringToBooleanValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA7D6B915F9433E00C25ABA /* JDStringToBooleanValueTransformer.m */; };
+		4DA7D6C715F9433E00C25ABA /* JDTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA7D6BD15F9433E00C25ABA /* JDTextView.m */; };
+		4DA7D6C815F9433E00C25ABA /* JDTreeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA7D6BF15F9433E00C25ABA /* JDTreeController.m */; };
+		4DA7D6CD15F943A400C25ABA /* RegexReference.html in Resources */ = {isa = PBXBuildFile; fileRef = 4DA7D6CB15F943A400C25ABA /* RegexReference.html */; };
+		4DA7D6CE15F943A400C25ABA /* Regular Expressions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4DA7D6CC15F943A400C25ABA /* Regular Expressions.plist */; };
+		4DA7D6D115F943E600C25ABA /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA7D6D015F943E600C25ABA /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4DA7D6D815F9454C00C25ABA /* Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA7D6D615F9454C00C25ABA /* Window.xib */; };
+		4DA7D6E915F949CD00C25ABA /* RegexReference.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA7D6E715F949CD00C25ABA /* RegexReference.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4DA7D69215F942AD00C25ABA /* RegEx.codaplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RegEx.codaplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DA7D69515F942AD00C25ABA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		4DA7D69815F942AD00C25ABA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		4DA7D69915F942AD00C25ABA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		4DA7D69A15F942AD00C25ABA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4DA7D69D15F942AD00C25ABA /* RegEx-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RegEx-Info.plist"; sourceTree = "<group>"; };
+		4DA7D69F15F942AD00C25ABA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4DA7D6A115F942AD00C25ABA /* RegEx-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RegEx-Prefix.pch"; sourceTree = "<group>"; };
+		4DA7D6A715F942DD00C25ABA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		4DA7D6A915F942E700C25ABA /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		4DA7D6AB15F9431A00C25ABA /* RegexPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexPlugin.h; sourceTree = "<group>"; };
+		4DA7D6AC15F9431A00C25ABA /* RegexPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexPlugin.m; sourceTree = "<group>"; };
+		4DA7D6AE15F9433E00C25ABA /* JDMatchValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDMatchValueTransformer.h; sourceTree = "<group>"; };
+		4DA7D6AF15F9433E00C25ABA /* JDMatchValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDMatchValueTransformer.m; sourceTree = "<group>"; };
+		4DA7D6B015F9433E00C25ABA /* JDOutlineDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDOutlineDataCell.h; sourceTree = "<group>"; };
+		4DA7D6B115F9433E00C25ABA /* JDOutlineDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDOutlineDataCell.m; sourceTree = "<group>"; };
+		4DA7D6B215F9433E00C25ABA /* JDOutlineHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDOutlineHeaderCell.h; sourceTree = "<group>"; };
+		4DA7D6B315F9433E00C25ABA /* JDOutlineHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDOutlineHeaderCell.m; sourceTree = "<group>"; };
+		4DA7D6B415F9433E00C25ABA /* JDOutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDOutlineView.h; sourceTree = "<group>"; };
+		4DA7D6B515F9433E00C25ABA /* JDOutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDOutlineView.m; sourceTree = "<group>"; };
+		4DA7D6B615F9433E00C25ABA /* JDRegexHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDRegexHelpViewController.h; sourceTree = "<group>"; };
+		4DA7D6B715F9433E00C25ABA /* JDRegexHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDRegexHelpViewController.m; sourceTree = "<group>"; };
+		4DA7D6B815F9433E00C25ABA /* JDStringToBooleanValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDStringToBooleanValueTransformer.h; sourceTree = "<group>"; };
+		4DA7D6B915F9433E00C25ABA /* JDStringToBooleanValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDStringToBooleanValueTransformer.m; sourceTree = "<group>"; };
+		4DA7D6BC15F9433E00C25ABA /* JDTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDTextView.h; sourceTree = "<group>"; };
+		4DA7D6BD15F9433E00C25ABA /* JDTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDTextView.m; sourceTree = "<group>"; };
+		4DA7D6BE15F9433E00C25ABA /* JDTreeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDTreeController.h; sourceTree = "<group>"; };
+		4DA7D6BF15F9433E00C25ABA /* JDTreeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDTreeController.m; sourceTree = "<group>"; };
+		4DA7D6CB15F943A400C25ABA /* RegexReference.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = RegexReference.html; sourceTree = "<group>"; };
+		4DA7D6CC15F943A400C25ABA /* Regular Expressions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Regular Expressions.plist"; sourceTree = "<group>"; };
+		4DA7D6CF15F943E600C25ABA /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		4DA7D6D015F943E600C25ABA /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		4DA7D6D515F9445700C25ABA /* CodaPlugInsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodaPlugInsController.h; sourceTree = "<group>"; };
+		4DA7D6D715F9454C00C25ABA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Window.xib; sourceTree = "<group>"; };
+		4DA7D6E815F949CD00C25ABA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RegexReference.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4DA7D68F15F942AD00C25ABA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DA7D6AA15F942E700C25ABA /* libicucore.dylib in Frameworks */,
+				4DA7D6A815F942DD00C25ABA /* WebKit.framework in Frameworks */,
+				4DA7D69615F942AD00C25ABA /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4DA7D68715F942AD00C25ABA = {
+			isa = PBXGroup;
+			children = (
+				4DA7D69B15F942AD00C25ABA /* RegEx */,
+				4DA7D69415F942AD00C25ABA /* Frameworks */,
+				4DA7D69315F942AD00C25ABA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4DA7D69315F942AD00C25ABA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4DA7D69215F942AD00C25ABA /* RegEx.codaplugin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4DA7D69415F942AD00C25ABA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DA7D6A915F942E700C25ABA /* libicucore.dylib */,
+				4DA7D6A715F942DD00C25ABA /* WebKit.framework */,
+				4DA7D69515F942AD00C25ABA /* Cocoa.framework */,
+				4DA7D69715F942AD00C25ABA /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4DA7D69715F942AD00C25ABA /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DA7D69815F942AD00C25ABA /* AppKit.framework */,
+				4DA7D69915F942AD00C25ABA /* CoreData.framework */,
+				4DA7D69A15F942AD00C25ABA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		4DA7D69B15F942AD00C25ABA /* RegEx */ = {
+			isa = PBXGroup;
+			children = (
+				4DA7D6C915F9435100C25ABA /* Classes */,
+				4DA7D6CA15F9439D00C25ABA /* Resources */,
+				4DA7D69C15F942AD00C25ABA /* Supporting Files */,
+			);
+			path = RegEx;
+			sourceTree = "<group>";
+		};
+		4DA7D69C15F942AD00C25ABA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4DA7D69D15F942AD00C25ABA /* RegEx-Info.plist */,
+				4DA7D69E15F942AD00C25ABA /* InfoPlist.strings */,
+				4DA7D6A115F942AD00C25ABA /* RegEx-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4DA7D6C915F9435100C25ABA /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4DA7D6D515F9445700C25ABA /* CodaPlugInsController.h */,
+				4DA7D6AE15F9433E00C25ABA /* JDMatchValueTransformer.h */,
+				4DA7D6AF15F9433E00C25ABA /* JDMatchValueTransformer.m */,
+				4DA7D6B015F9433E00C25ABA /* JDOutlineDataCell.h */,
+				4DA7D6B115F9433E00C25ABA /* JDOutlineDataCell.m */,
+				4DA7D6B215F9433E00C25ABA /* JDOutlineHeaderCell.h */,
+				4DA7D6B315F9433E00C25ABA /* JDOutlineHeaderCell.m */,
+				4DA7D6B415F9433E00C25ABA /* JDOutlineView.h */,
+				4DA7D6B515F9433E00C25ABA /* JDOutlineView.m */,
+				4DA7D6B615F9433E00C25ABA /* JDRegexHelpViewController.h */,
+				4DA7D6B715F9433E00C25ABA /* JDRegexHelpViewController.m */,
+				4DA7D6B815F9433E00C25ABA /* JDStringToBooleanValueTransformer.h */,
+				4DA7D6B915F9433E00C25ABA /* JDStringToBooleanValueTransformer.m */,
+				4DA7D6BC15F9433E00C25ABA /* JDTextView.h */,
+				4DA7D6BD15F9433E00C25ABA /* JDTextView.m */,
+				4DA7D6BE15F9433E00C25ABA /* JDTreeController.h */,
+				4DA7D6BF15F9433E00C25ABA /* JDTreeController.m */,
+				4DA7D6CF15F943E600C25ABA /* RegexKitLite.h */,
+				4DA7D6D015F943E600C25ABA /* RegexKitLite.m */,
+				4DA7D6AB15F9431A00C25ABA /* RegexPlugin.h */,
+				4DA7D6AC15F9431A00C25ABA /* RegexPlugin.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		4DA7D6CA15F9439D00C25ABA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4DA7D6CB15F943A400C25ABA /* RegexReference.html */,
+				4DA7D6CC15F943A400C25ABA /* Regular Expressions.plist */,
+				4DA7D6D615F9454C00C25ABA /* Window.xib */,
+				4DA7D6E715F949CD00C25ABA /* RegexReference.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4DA7D69115F942AD00C25ABA /* RegEx */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DA7D6A415F942AD00C25ABA /* Build configuration list for PBXNativeTarget "RegEx" */;
+			buildPhases = (
+				4DA7D68E15F942AD00C25ABA /* Sources */,
+				4DA7D68F15F942AD00C25ABA /* Frameworks */,
+				4DA7D69015F942AD00C25ABA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RegEx;
+			productName = RegEx;
+			productReference = 4DA7D69215F942AD00C25ABA /* RegEx.codaplugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4DA7D68915F942AD00C25ABA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Joe Dakroub";
+			};
+			buildConfigurationList = 4DA7D68C15F942AD00C25ABA /* Build configuration list for PBXProject "RegEx" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4DA7D68715F942AD00C25ABA;
+			productRefGroup = 4DA7D69315F942AD00C25ABA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4DA7D69115F942AD00C25ABA /* RegEx */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4DA7D69015F942AD00C25ABA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DA7D6A015F942AD00C25ABA /* InfoPlist.strings in Resources */,
+				4DA7D6CD15F943A400C25ABA /* RegexReference.html in Resources */,
+				4DA7D6CE15F943A400C25ABA /* Regular Expressions.plist in Resources */,
+				4DA7D6D815F9454C00C25ABA /* Window.xib in Resources */,
+				4DA7D6E915F949CD00C25ABA /* RegexReference.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4DA7D68E15F942AD00C25ABA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DA7D6AD15F9431A00C25ABA /* RegexPlugin.m in Sources */,
+				4DA7D6C015F9433E00C25ABA /* JDMatchValueTransformer.m in Sources */,
+				4DA7D6C115F9433E00C25ABA /* JDOutlineDataCell.m in Sources */,
+				4DA7D6C215F9433E00C25ABA /* JDOutlineHeaderCell.m in Sources */,
+				4DA7D6C315F9433E00C25ABA /* JDOutlineView.m in Sources */,
+				4DA7D6C415F9433E00C25ABA /* JDRegexHelpViewController.m in Sources */,
+				4DA7D6C515F9433E00C25ABA /* JDStringToBooleanValueTransformer.m in Sources */,
+				4DA7D6C715F9433E00C25ABA /* JDTextView.m in Sources */,
+				4DA7D6C815F9433E00C25ABA /* JDTreeController.m in Sources */,
+				4DA7D6D115F943E600C25ABA /* RegexKitLite.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4DA7D69E15F942AD00C25ABA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DA7D69F15F942AD00C25ABA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4DA7D6D615F9454C00C25ABA /* Window.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DA7D6D715F9454C00C25ABA /* en */,
+			);
+			name = Window.xib;
+			sourceTree = "<group>";
+		};
+		4DA7D6E715F949CD00C25ABA /* RegexReference.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DA7D6E815F949CD00C25ABA /* en */,
+			);
+			name = RegexReference.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4DA7D6A215F942AD00C25ABA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		4DA7D6A315F942AD00C25ABA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		4DA7D6A515F942AD00C25ABA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RegEx/RegEx-Prefix.pch";
+				INFOPLIST_FILE = "RegEx/RegEx-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = codaplugin;
+			};
+			name = Debug;
+		};
+		4DA7D6A615F942AD00C25ABA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RegEx/RegEx-Prefix.pch";
+				INFOPLIST_FILE = "RegEx/RegEx-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = codaplugin;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4DA7D68C15F942AD00C25ABA /* Build configuration list for PBXProject "RegEx" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DA7D6A215F942AD00C25ABA /* Debug */,
+				4DA7D6A315F942AD00C25ABA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4DA7D6A415F942AD00C25ABA /* Build configuration list for PBXNativeTarget "RegEx" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DA7D6A515F942AD00C25ABA /* Debug */,
+				4DA7D6A615F942AD00C25ABA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4DA7D68915F942AD00C25ABA /* Project object */;
+}

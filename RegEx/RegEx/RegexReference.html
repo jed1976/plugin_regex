@@ -1,0 +1,623 @@
+<html>
+    <head>
+        <title>Regex Reference</title>
+        <style type="text/css">
+            body
+            {
+                background: #FFF;
+                color: #333;
+                font: 0.75em normal Helvetica, sans-serif;
+            }
+            
+            a,
+            a:link,
+            a:visited,
+            a:hover,
+            a:active
+            {
+                color: #007FFF;
+            }
+            
+            .hardNobr
+            {
+                white-space: nowrap;
+            }
+            
+            .credit
+            {
+                display: block;
+                font-size: 0.75em;
+                font-style: italic;
+                margin: 0.5em 0;
+            }
+            
+            .regex
+            {
+                font: 0.85em Menlo, 'Lucida Console', courier, monospace;
+                margin-right: 0.2em;                
+                white-space: nowrap;
+            }
+            
+            h1
+            {
+                font-size: 1.5em;
+                font-weight: bold;
+                margin: 1em 0;
+            }
+            
+            table
+            {
+                border-left: 1px solid #DDD;
+                border-top: 1px solid #DDD;
+                border-collapse: collapse;
+            }
+            
+            th,
+            td
+            {
+                border-bottom: 1px solid #DDD;
+                border-right: 1px solid #DDD;
+                padding: 2px;
+                text-align: left;
+                vertical-align: top;
+            }
+            
+            tr:nth-child(2n)
+            {
+                background: #EEE;
+            }
+            </style>
+    </head>
+    <body>
+        <h1>Metacharacters</h1>
+        <table>
+            <tr>
+                <th width="45%">Character</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">\a</span>
+                </td>
+                <td>Match a <span class="unicodeCharName" title="Unicode Character Name">BELL</span>, <span class="consoleText">\u0007</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">\A</span>
+                </td>
+                <td>Match at the beginning of the input. Differs from <span class="regex">^</span> in that <span class="regex">\A</span> will not match after a <span class="regex-def">new-line</span> within the input.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">\b</span>, outside of a <span class="hardNobr">
+                        <span class="regex">[</span>
+                        <i>Set</i>
+                        <span class="regex">]</span>
+                    </span>
+                </td>
+                <td>Match if the current position is a word boundary. Boundaries occur at the transitions between <span class="regex-def">word</span> <span class="regex">\w</span> and <span class="regex-def">non-word</span> <span class="regex">\W</span> characters, with combining marks ignored.<div style="margin-top: 3px; margin-bottom: 2px;">
+                </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">\b</span>, within a <span class="hardNobr">
+                        <span class="regex">[</span>
+                        <i>Set</i>
+                        <span class="regex">]</span>
+                    </span>
+                </td>
+                <td>Match a <span class="unicodeCharName" title="Unicode Character Name">BACKSPACE</span>, <span class="consoleText">\u0008</span>.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">\B</span>
+                </td>
+                <td>Match if the current position is not a <span class="regex-def">word</span> boundary.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="hardNobr">
+                        <span class="regex">\c</span>
+                        <i>x</i>
+                    </span>
+                </td>
+                <td>Match a <span class="hardNobr">
+                    <i title="Control Character x, i.e. ^C">Control-x</i>
+                </span> character.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">\d</span>
+                </td>
+                <td>Match any character with the <i>Unicode General Category</i> of <span class="consoleText" title="Unicode Property Name, \p{Nd}">Nd</span> (<i>Number</i>, <i>Decimal Digit</i>).</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">\D</span>
+                </td>
+                <td>Match any character that is not a <span class="regex-def">decimal digit</span>.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">\e</span>
+                </td>
+                <td>Match an <span class="unicodeCharName" title="Unicode Character Name">ESCAPE</span>, <span class="consoleText">\u001B</span>.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">\E</span>
+                </td>
+                <td>Terminates a <span class="hardNobr">
+                    <span class="regex">\Q</span>
+                    <span title="Quoted Characters">&hellip;</span>
+                    <span class="regex">\E</span>
+                </span> quoted sequence.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">\f</span>
+                </td>
+                <td>Match a <span class="unicodeCharName" title="Unicode Character Name">FORM FEED</span>, <span class="consoleText">\u000C</span>.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">\G</span>
+                </td>
+                <td>Match if the current position is at the end of the previous match.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">\n</span>
+                </td>
+                <td>Match a <span class="unicodeCharName" title="Unicode Character Name">LINE FEED</span>, <span class="consoleText">\u000A</span>.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="hardNobr">
+                        <span class="regex">\N{</span>
+                        <i>Unicode Character Name</i>
+                        <span class="regex">}</span>
+                    </span>
+                </td>
+                <td>Match the named <i>Unicode Character</i>.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="hardNobr">
+                        <span class="regex">\p{</span>
+                        <i>Unicode Property Name</i>
+                        <span class="regex">}</span>
+                    </span>
+                </td>
+                <td>Match any character with the specified <i>Unicode Property</i>.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="hardNobr">
+                        <span class="regex">\P{</span>
+                        <i>Unicode Property Name</i>
+                        <span class="regex">}</span>
+                    </span>
+                </td>
+                <td>Match any character not having the specified <i>Unicode Property</i>.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">\Q</span>
+                </td>
+                <td>Quotes all following characters until <span class="regex">\E</span>.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">\r</span>
+                </td>
+                <td>Match a <span class="unicodeCharName" title="Unicode Character Name">CARRIAGE RETURN</span>, <span class="consoleText">\u000D</span>.</td>
+            </tr>
+            <tr>
+                <td id="ICUSyntax_ICURegularExpressionSyntax_white_space">
+                    <span class="regex">\s</span>
+                </td>
+                <td>Match a <span class="regex-def">white space</span> character. White space is defined as <span class="regex">[\t\n\f\r\p{Z}]</span>.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">\S</span>
+                </td>
+                <td>Match a <span class="hardNobr">non-<span class="regex-def">white space</span>
+                </span> character.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">\t</span>
+                </td>
+                <td>Match a <span class="unicodeCharName" title="Unicode Character Name">HORIZONTAL TABULATION</span>, <span class="consoleText">\u0009</span>.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="hardNobr">
+                        <span class="regex">\u</span>
+                        <i>hhhh</i>
+                    </span>
+                </td>
+                <td>Match the character with the hex value <i title="Hexidecimal Number">hhhh</i>.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="hardNobr">
+                        <span class="regex">\U</span>
+                        <i title="Hexidecimal Number">hhhhhhhh</i>
+                    </span>
+                </td>
+                <td>Match the character with the hex value <i title="Hexidecimal Number">hhhhhhhh</i>. Exactly eight hex digits must be provided, even though the largest Unicode code point is <span class="consoleText">\U0010ffff</span>.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">\w</span>
+                </td>
+                <td>Match a word character. Word characters are <span class="regex">[\p{Ll}\p{Lu}\p{Lt}\p{Lo}\p{Nd}]</span>.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">\W</span>
+                </td>
+                <td>Match a <span class="hardNobr">non-word</span> character.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="hardNobr">
+                        <span class="regex">\x{</span>
+                        <i title="Hexidecimal Number">h</i>&hellip;<span class="regex">}</span>
+                    </span>
+                </td>
+                <td>Match the character with hex value <i title="Hexidecimal Number">hhhh</i>. From one to six hex digits may be supplied.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="hardNobr">
+                        <span class="regex">\x</span>
+                        <i title="Hexidecimal Number">hh</i>
+                    </span>
+                </td>
+                <td>Match the character with two digit hex value <i title="Hexidecimal Number">hh</i>.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">\X</span>
+                </td>
+                <td>Match a <a href="http://www.unicode.org/reports/tr29/#Grapheme_Cluster_Boundaries">Grapheme Cluster</a>.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">\Z</span>
+                </td>
+                <td>Match if the current position is at the end of input, but before the final line terminator, if one exists.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">\z</span>
+                </td>
+                <td>Match if the current position is at the end of input.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="hardNobr">
+                        <span class="regex">\</span>
+                        <i title="Decimal Number">n</i>
+                    </span>
+                </td>
+                <td>
+                    <div>Back Reference. Match whatever the <i title="Decimal Number">n</i>th capturing group matched. <i title="Decimal Number">n</i> must be a number &ge; 1 and &le; total number of capture groups in the pattern.</div>
+                    <div class="box small">
+                        <div>
+                            <div class="table">
+                                <div class="row">
+                                    <div class="label cell">Note:</div>
+                                    <div class="message cell">Octal escapes, such as <span class="consoleText">\012</span>, are not supported.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="hardNobr">
+                        <span class="regex">[</span>
+                        <i>pattern</i>
+                        <span class="regex">]</span>
+                    </span>
+                </td>
+                <td>Match any one character from the set.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">.</span>
+                </td>
+                <td>Match any character.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">^</span>
+                </td>
+                <td>Match at the beginning of a line.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">$</span>
+                </td>
+                <td>Match at the end of a line.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="regex">\</span>
+                </td>
+                <td>Quotes the following character. Characters that must be quoted to be treated as literals are <span class="consoleText">* ? + [ ( ) { } ^ $ | \ . /</span>
+                </td>
+            </tr>            
+        </table>
+
+        <h1>Operators</h1>
+        <table>
+            <tbody>
+                <tr>
+                    <th width="45%">Operator</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="regex">|</span>
+                    </td>
+                    <td>Alternation. <span class="regex">A|B</span> matches either <span class="regex">A</span> or <span class="regex">B</span>.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="regex">*</span>
+                    </td>
+                    <td>Match zero or more times. Match as many times as possible.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="regex">+</span>
+                    </td>
+                    <td>Match one or more times. Match as many times as possible.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="regex">?</span>
+                    </td>
+                    <td>Match zero or one times. Prefer one.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="hardNobr">
+                            <span class="regex">{</span>
+                            <i title="Decimal Number">n</i>
+                            <span class="regex">}</span>
+                        </span>
+                    </td>
+                    <td>Match exactly <i title="Decimal Number">n</i> times.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="hardNobr">
+                            <span class="regex">{</span>
+                            <i title="Decimal Number">n</i>
+                            <span class="regex">,}</span>
+                        </span>
+                    </td>
+                    <td>Match at least <i title="Decimal Number">n</i> times. Match as many times as possible.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="hardNobr">
+                            <span class="regex">{</span>
+                            <i title="Decimal Number">n</i>
+                            <span class="regex">,</span>
+                            <i title="Decimal Number">m</i>
+                            <span class="regex">}</span>
+                        </span>
+                    </td>
+                    <td>Match between <i title="Decimal Number">n</i> and <i title="Decimal Number">m</i> times. Match as many times as possible, but not more than <i title="Decimal Number">m</i>.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="regex">*?</span>
+                    </td>
+                    <td>Match zero or more times. Match as few times as possible.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="regex">+?</span>
+                    </td>
+                    <td>Match one or more times. Match as few times as possible.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="regex">??</span>
+                    </td>
+                    <td>Match zero or one times. Prefer zero.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="hardNobr">
+                            <span class="regex">{</span>
+                            <i title="Decimal Number">n</i>
+                            <span class="regex">}?</span>
+                        </span>
+                    </td>
+                    <td>Match exactly <i title="Decimal Number">n</i> times.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="hardNobr">
+                            <span class="regex">{</span>
+                            <i title="Decimal Number">n</i>
+                            <span class="regex">,}?</span>
+                        </span>
+                    </td>
+                    <td>Match at least <i title="Decimal Number">n</i> times, but no more than required for an overall pattern match.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="hardNobr">
+                            <span class="regex">{</span>
+                            <i title="Decimal Number">n</i>
+                            <span class="regex">,</span>
+                            <i title="Decimal Number">m</i>
+                            <span class="regex">}?</span>
+                        </span>
+                    </td>
+                    <td>Match between <i title="Decimal Number">n</i> and <i title="Decimal Number">m</i> times. Match as few times as possible, but not less than <i title="Decimal Number">n</i>.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="regex">*+</span>
+                    </td>
+                    <td>Match zero or more times. Match as many times as possible when first encountered, do not retry with fewer even if overall match fails. Possessive match.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="regex">++</span>
+                    </td>
+                    <td>Match one or more times. Possessive match.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="regex">?+</span>
+                    </td>
+                    <td>Match zero or one times. Possessive match.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="hardNobr">
+                            <span class="regex">{</span>
+                            <i title="Decimal Number">n</i>
+                            <span class="regex">}+</span>
+                        </span>
+                    </td>
+                    <td>Match exactly <i title="Decimal Number">n</i> times. Possessive match.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="hardNobr">
+                            <span class="regex">{</span>
+                            <i title="Decimal Number">n</i>
+                            <span class="regex">,}+</span>
+                        </span>
+                    </td>
+                    <td>Match at least <i title="Decimal Number">n</i> times. Possessive match.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="hardNobr">
+                            <span class="regex">{</span>
+                            <i title="Decimal Number">n</i>
+                            <span class="regex">,</span>
+                            <i title="Decimal Number">m</i>
+                            <span class="regex">}+</span>
+                        </span>
+                    </td>
+                    <td>Match between <i title="Decimal Number">n</i> and <i title="Decimal Number">m</i> times. Possessive match.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="hardNobr">
+                            <span class="regex">(</span>
+                            <span title="Regular Expression">&hellip;</span>
+                            <span class="regex">)</span>
+                        </span>
+                    </td>
+                    <td>Capturing parentheses. Range of input that matched the parenthesized subexpression is available after the match.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="hardNobr">
+                            <span class="regex">(?:</span>
+                            <span title="Regular Expression">&hellip;</span>
+                            <span class="regex">)</span>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="hardNobr">Non-capturing</span> parentheses. Groups the included pattern, but does not provide capturing of matching text. Somewhat more efficient than capturing parentheses.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="hardNobr">
+                            <span class="regex">(?&gt;</span>
+                            <span title="Regular Expression">&hellip;</span>
+                            <span class="regex">)</span>
+                        </span>
+                    </td>
+                    <td>Atomic-match parentheses. First match of the parenthesized subexpression is the only one tried; if it does not lead to an overall pattern match, back up the search for a match to a position before the <span class="regex">(?&gt;</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="hardNobr">
+                            <span class="regex">(?#</span>
+                            <span title="Comment">&hellip;</span>
+                            <span class="regex">)</span>
+                        </span>
+                    </td>
+                    <td>Free-format comment <span class="hardNobr">
+                        <span class="regex">(?#</span>
+                        <i>comment</i>
+                        <span class="regex">)</span>
+                    </span>.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="hardNobr">
+                            <span class="regex">(?=</span>
+                            <span title="Regular Expression">&hellip;</span>
+                            <span class="regex">)</span>
+                        </span>
+                    </td>
+                    <td>Look-ahead assertion. True if the parenthesized pattern matches at the current input position, but does not advance the input position.
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="hardNobr">
+                            <span class="regex">(?!</span>
+                            <span title="Regular Expression">&hellip;</span>
+                            <span class="regex">)</span>
+                        </span>
+                    </td>
+                    <td>Negative look-ahead assertion. True if the parenthesized pattern does not match at the current input position. Does not advance the input position.
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="hardNobr">
+                            <span class="regex">(?&lt;=</span>
+                            <span title="Regular Expression">&hellip;</span>
+                            <span class="regex">)</span>
+                        </span>
+                    </td>
+                    <td>Look-behind assertion. True if the parenthesized pattern matches text preceding the current input position, with the last character of the match being the input character just before the current position. Does not alter the input position. The length of possible strings matched by the look-behind pattern must not be unbounded (no <span class="regex">*</span> or <span class="regex">+</span> operators).
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="hardNobr">
+                            <span class="regex">(?&lt;!</span>
+                            <span title="Regular Expression">&hellip;</span>
+                            <span class="regex">)</span>
+                        </span>
+                    </td>
+                    <td>Negative Look-behind assertion. True if the parenthesized pattern does not match text preceding the current input position, with the last character of the match being the input character just before the current position. Does not alter the input position. The length of possible strings matched by the look-behind pattern must not be unbounded (no <span class="regex">*</span> or <span class="regex">+</span> operators).
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <span class="credit">Reprinted from the <a href="http://userguide.icu-project.org/strings/regexp">ICU User Guide - Regular Expressions</a></span>
+    </body>
+</html>

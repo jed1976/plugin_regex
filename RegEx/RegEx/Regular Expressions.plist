@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>Custom</string>
+		<key>children</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>^#?([0-9a-f]{3}){1,2}$</string>
+				<key>description</key>
+				<string>Matches valid hexadecimal colors, 3 or 6 hexdigits only. # sign is optional. Matches both lower and upper case.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>[(]?\d{3}[)]?\s?-?\s?\d{3}\s?-?\s?\d{4}</string>
+				<key>description</key>
+				<string>Matches all 10-digit phone numbers.</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Anchors</string>
+		<key>children</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>\b</string>
+				<key>description</key>
+				<string>Matches a word boundary position such as whitespace or the beginning or end of the string.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\B</string>
+				<key>description</key>
+				<string>Matches any position that is not a word boundary.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>^</string>
+				<key>description</key>
+				<string>Matches the beginning of the string.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>$</string>
+				<key>description</key>
+				<string>Matches the end of the string.</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Character Classes</string>
+		<key>children</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>.</string>
+				<key>description</key>
+				<string>Match any character except for line breaks if Dot Matches All is false.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\w</string>
+				<key>description</key>
+				<string>Match a word character. Word characters are [\p{Ll}\p{Lu}\p{Lt}\p{Lo}\p{Nd}].</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\W</string>
+				<key>description</key>
+				<string>Matches any character that is not a word character (alphanumeric &amp; underscore).</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\d</string>
+				<key>description</key>
+				<string>Matches any digit character (0-9).</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\D</string>
+				<key>description</key>
+				<string>Matches any character that is not a digit character (0-9).</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\s</string>
+				<key>description</key>
+				<string>Matches any whitespace character (spaces, tabs, line breaks).</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\S</string>
+				<key>description</key>
+				<string>Matches any character that is not a whitespace character (spaces, tabs, line breaks).</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Character Sets</string>
+		<key>children</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>[ABC]</string>
+				<key>description</key>
+				<string>Match any single character in the set.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>[^ABC]</string>
+				<key>description</key>
+				<string>Match any single character that is not in the set.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>[a-z]</string>
+				<key>description</key>
+				<string>Matches any single character in the range a-z.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>[a-zA-Z]</string>
+				<key>description</key>
+				<string>Matches any single character in the range a-z or A-Z.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>[^f-m]</string>
+				<key>description</key>
+				<string>Matches any single character that is not in the range f-m.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>[0-9]</string>
+				<key>description</key>
+				<string>Matches any single character in the range 0-9.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>[\w&apos;-]</string>
+				<key>description</key>
+				<string>Matches any word character, single quote, or hyphen.</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Groups</string>
+		<key>children</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>(ABC)</string>
+				<key>description</key>
+				<string>Groups multiple tokens together. This allows you to apply quantifiers to the full group. This creates a capturing group (roll over a match highlight to see capture group results).</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>(?:ABC)</string>
+				<key>description</key>
+				<string>Groups multiple tokens together without creating a capturing group. This allows you to apply quantifiers to the full group.</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Escaped Characters</string>
+		<key>children</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>\\</string>
+				<key>description</key>
+				<string>Matches a \ character.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\.</string>
+				<key>description</key>
+				<string>Matches a . character.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\+</string>
+				<key>description</key>
+				<string>Matches a + character.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\*</string>
+				<key>description</key>
+				<string>Matches a * character.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\?</string>
+				<key>description</key>
+				<string>Matches a ? character.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\^</string>
+				<key>description</key>
+				<string>Matches a ^ character.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\$</string>
+				<key>description</key>
+				<string>Matches a $ character.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\[</string>
+				<key>description</key>
+				<string>Matches a [ character.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\]</string>
+				<key>description</key>
+				<string>Matches a ] character.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\(</string>
+				<key>description</key>
+				<string>Matches a ( character.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\)</string>
+				<key>description</key>
+				<string>Matches a ) character.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\|</string>
+				<key>description</key>
+				<string>Matches a | character.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\{</string>
+				<key>description</key>
+				<string>Matches a { character.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\}</string>
+				<key>description</key>
+				<string>Matches a } character.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\/</string>
+				<key>description</key>
+				<string>Matches a / character.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\&apos;</string>
+				<key>description</key>
+				<string>Matches a &apos; character.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\#</string>
+				<key>description</key>
+				<string>Matches a # character.</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Lookaround</string>
+		<key>children</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>(?=ABC)</string>
+				<key>description</key>
+				<string>Positive lookahead. Matches a group after your main expression without including it in the result.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>(?!ABC)</string>
+				<key>description</key>
+				<string>Negative lookahead. Specifies a group that can not match after your main expression (ie. if it matches, the result is discarded).</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>(?&lt;=ABC)</string>
+				<key>description</key>
+				<string>Positive lookbehind. Matches a group before your main expression without including it in the result.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>(?&lt;!ABC)</string>
+				<key>description</key>
+				<string>Negative lookbehind. Specifies a group that can not match before your main expression (ie. if it matches, the result is discarded).</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Quantifiers</string>
+		<key>children</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>?</string>
+				<key>description</key>
+				<string>Makes the preceeding token optional. It will match 0 or 1 of the preceeding token.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>*</string>
+				<key>description</key>
+				<string>Matches 0 or more of the preceeding token. This is a greedy match, and will match as many characters as possible before satisfying the next token.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>*?</string>
+				<key>description</key>
+				<string>Matches 0 or more of the preceeding token. This is a lazy match, and will match as few characters as possible before satisfying the next token.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>+</string>
+				<key>description</key>
+				<string>Matches 1 or more of the preceeding token. This is a greedy match, and will match as many characters as possible before satisfying the next token.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>+?</string>
+				<key>description</key>
+				<string>Matches 0 or more of the preceeding token. This is a lazy match, and will match as few characters as possible before satisfying the next token.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>{5}</string>
+				<key>description</key>
+				<string>Matches exactly 5 of the preceeding token.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>{2,5}</string>
+				<key>description</key>
+				<string>Matches 2 to 5 of the preceeding token. This is a greedy match, and will match as many characters as possible before satisfying the next token.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>{2,5}?</string>
+				<key>description</key>
+				<string>Matches 2 to 5 of the preceeding token. This is a lazy match, and will match as few characters as possible before satisfying the next token.</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Special Characters</string>
+		<key>children</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>\t</string>
+				<key>description</key>
+				<string>Tab character.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\r</string>
+				<key>description</key>
+				<string>Carriage return character.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\n</string>
+				<key>description</key>
+				<string>Line break character.</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>\xFF</string>
+				<key>description</key>
+				<string>Specify a character by its hexadecimal index.</string>
+			</dict>
+		</array>
+	</dict>
+</array>
+</plist>
