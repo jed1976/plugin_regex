@@ -433,7 +433,7 @@ NSString * const kDefaultEditorText = @"The quick brown fox jumps over the lazy 
 
 - (void)colorPanelColorDidChange:(NSNotification *)note
 {
-    [self setHighlightColor:[colorPanel color]];
+    [self setHighlightColor:[colorPanel color]];    
 }
 
 - (void)colorPanelDidClose:(NSNotification *)note
@@ -499,8 +499,11 @@ NSString * const kDefaultEditorText = @"The quick brown fox jumps over the lazy 
 {
     [self setMatchCount:0];
     
-    textEditorAttributes = [NSDictionary dictionaryWithObject:[self highlightColor] forKey:NSBackgroundColorAttributeName];
-    
+    textEditorAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                            [self highlightColor], NSBackgroundColorAttributeName,
+                            ([[self highlightColor] pc_isDarkColor] ? [NSColor whiteColor] : [NSColor blackColor]), NSForegroundColorAttributeName,
+                            nil];
+                                                    
     NSMutableString *mutableString = [NSMutableString stringWithString:[[self textView] string]];
     NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:[[self textView] string]];
     

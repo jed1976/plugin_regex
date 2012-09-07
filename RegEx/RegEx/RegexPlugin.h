@@ -10,6 +10,7 @@
 #import "CodaPlugInsController.h"
 #import "JDOutlineDataCell.h"
 #import "JDOutlineHeaderCell.h"
+#import "NSColor-Additions.h"
 #import "RegexKitLite.h"
 
 @class CodaPlugInsController;
