@@ -57,6 +57,12 @@ Problems or Questions
 If you run into any issues using this plug-in or just have general comments or recommendations, please contact me @joedakroub via Twitter or joe.dakroub@me.com.
 
 
+LICENSE
+=======
+
+RegEx is distributed under The MIT License (MIT). Please refer to 'LICENSE' file for more information.
+
+
 Changelog
 =========
 
