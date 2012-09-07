@@ -838,6 +838,17 @@ wGw</bytes>
 											<string key="NSAction">_popUpItemAction:</string>
 											<reference key="NSTarget" ref="672900453"/>
 										</object>
+										<object class="NSMenuItem" id="256131466">
+											<reference key="NSMenu" ref="296093979"/>
+											<string key="NSTitle">Secondary Highlight Color</string>
+											<string key="NSKeyEquiv"/>
+											<int key="NSKeyEquivModMask">1048576</int>
+											<int key="NSMnemonicLoc">2147483647</int>
+											<reference key="NSOnImage" ref="723239416"/>
+											<reference key="NSMixedImage" ref="460038358"/>
+											<string key="NSAction">_popUpItemAction:</string>
+											<reference key="NSTarget" ref="672900453"/>
+										</object>
 										<object class="NSMenuItem" id="355852212">
 											<reference key="NSMenu" ref="296093979"/>
 											<bool key="NSIsDisabled">YES</bool>
@@ -850,20 +861,47 @@ wGw</bytes>
 											<string key="NSAction">_popUpItemAction:</string>
 											<reference key="NSTarget" ref="672900453"/>
 										</object>
-										<object class="NSMenuItem" id="347408638">
+										<object class="NSMenuItem" id="309633970">
 											<reference key="NSMenu" ref="296093979"/>
-											<string key="NSTitle">Highlight Color...</string>
+											<string key="NSTitle">Highlight Colors</string>
 											<string key="NSKeyEquiv"/>
-											<int key="NSKeyEquivModMask">1048576</int>
 											<int key="NSMnemonicLoc">2147483647</int>
 											<reference key="NSOnImage" ref="723239416"/>
 											<reference key="NSMixedImage" ref="460038358"/>
-											<string key="NSAction">_popUpItemAction:</string>
-											<reference key="NSTarget" ref="672900453"/>
+											<string key="NSAction">submenuAction:</string>
+											<object class="NSMenu" key="NSSubmenu" id="345032562">
+												<string key="NSTitle">Highlight Colors</string>
+												<array class="NSMutableArray" key="NSMenuItems">
+													<object class="NSMenuItem" id="347408638">
+														<reference key="NSMenu" ref="345032562"/>
+														<string key="NSTitle">Primary...</string>
+														<string key="NSKeyEquiv"/>
+														<int key="NSKeyEquivModMask">1048576</int>
+														<int key="NSMnemonicLoc">2147483647</int>
+														<reference key="NSOnImage" ref="723239416"/>
+														<reference key="NSMixedImage" ref="460038358"/>
+														<string key="NSAction">_popUpItemAction:</string>
+														<int key="NSTag">1000</int>
+														<reference key="NSTarget" ref="672900453"/>
+													</object>
+													<object class="NSMenuItem" id="552984395">
+														<reference key="NSMenu" ref="345032562"/>
+														<string key="NSTitle">Secondary...</string>
+														<string key="NSKeyEquiv"/>
+														<int key="NSKeyEquivModMask">1048576</int>
+														<int key="NSMnemonicLoc">2147483647</int>
+														<reference key="NSOnImage" ref="723239416"/>
+														<reference key="NSMixedImage" ref="460038358"/>
+														<string key="NSAction">_popUpItemAction:</string>
+														<int key="NSTag">2000</int>
+														<reference key="NSTarget" ref="672900453"/>
+													</object>
+												</array>
+											</object>
 										</object>
 										<object class="NSMenuItem" id="209399190">
 											<reference key="NSMenu" ref="296093979"/>
-											<string key="NSTitle">Editor Font...</string>
+											<string key="NSTitle">Font...</string>
 											<string key="NSKeyEquiv"/>
 											<int key="NSMnemonicLoc">2147483647</int>
 											<reference key="NSOnImage" ref="723239416"/>
@@ -874,6 +912,7 @@ wGw</bytes>
 									</array>
 									<reference key="NSMenuFont" ref="17675185"/>
 								</object>
+								<int key="NSSelectedIndex">-1</int>
 								<bool key="NSPullDown">YES</bool>
 								<int key="NSPreferredEdge">1</int>
 								<bool key="NSUsesItemFromMenu">YES</bool>
@@ -1207,14 +1246,6 @@ wGw</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">displayColorPanel:</string>
-						<reference key="source" ref="1021"/>
-						<reference key="destination" ref="347408638"/>
-					</object>
-					<int key="connectionID">1205</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">displayFontPanel:</string>
 						<reference key="source" ref="1021"/>
 						<reference key="destination" ref="209399190"/>
@@ -1292,6 +1323,22 @@ wGw</bytes>
 						<reference key="destination" ref="317703331"/>
 					</object>
 					<int key="connectionID">1224</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">displayColorPanel:</string>
+						<reference key="source" ref="1021"/>
+						<reference key="destination" ref="347408638"/>
+					</object>
+					<int key="connectionID">1205</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">displayColorPanel:</string>
+						<reference key="source" ref="1021"/>
+						<reference key="destination" ref="552984395"/>
+					</object>
+					<int key="connectionID">1226</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -1581,6 +1628,22 @@ wGw</bytes>
 						<reference key="destination" ref="1021"/>
 					</object>
 					<int key="connectionID">1180</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: self.useSecondaryHighlightColor</string>
+						<reference key="source" ref="256131466"/>
+						<reference key="destination" ref="1021"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="256131466"/>
+							<reference key="NSDestination" ref="1021"/>
+							<string key="NSLabel">value: self.useSecondaryHighlightColor</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">self.useSecondaryHighlightColor</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">1229</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1878,9 +1941,10 @@ wGw</bytes>
 							<reference ref="793819900"/>
 							<reference ref="889616794"/>
 							<reference ref="355852212"/>
-							<reference ref="347408638"/>
 							<reference ref="992659831"/>
 							<reference ref="209399190"/>
+							<reference ref="256131466"/>
+							<reference ref="309633970"/>
 						</array>
 						<reference key="parent" ref="672900453"/>
 					</object>
@@ -1907,11 +1971,6 @@ wGw</bytes>
 					<object class="IBObjectRecord">
 						<int key="objectID">932</int>
 						<reference key="object" ref="355852212"/>
-						<reference key="parent" ref="296093979"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">933</int>
-						<reference key="object" ref="347408638"/>
 						<reference key="parent" ref="296093979"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -2003,6 +2062,38 @@ wGw</bytes>
 						<reference key="object" ref="63221271"/>
 						<reference key="parent" ref="317703331"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1227</int>
+						<reference key="object" ref="256131466"/>
+						<reference key="parent" ref="296093979"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1230</int>
+						<reference key="object" ref="309633970"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="345032562"/>
+						</array>
+						<reference key="parent" ref="296093979"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1231</int>
+						<reference key="object" ref="345032562"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="347408638"/>
+							<reference ref="552984395"/>
+						</array>
+						<reference key="parent" ref="309633970"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">933</int>
+						<reference key="object" ref="347408638"/>
+						<reference key="parent" ref="345032562"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1225</int>
+						<reference key="object" ref="552984395"/>
+						<reference key="parent" ref="345032562"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -2023,6 +2114,10 @@ wGw</bytes>
 				<string key="1154.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1222.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1223.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="1225.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="1227.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="1230.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="1231.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="371.IBNSWindowAutoPositionCentersHorizontal"/>
 				<boolean value="YES" key="371.IBNSWindowAutoPositionCentersVertical"/>
 				<string key="371.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2103,7 +2198,7 @@ wGw</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1224</int>
+			<int key="maxID">1232</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

@@ -1,5 +1,5 @@
-RegEx 1.0
-=========
+RegEx 1.0.1
+===========
 
 Hello. Thank you for downloading the RegEx plug-in for Coda 2.
 
@@ -23,7 +23,7 @@ Clicking the + button on the bottom left will reveal a menu in which you can add
 
 If you remove a group or regular expression on accident, you can use Control-Z or Undo/Redo from Coda's Edit menu.
 
-Finally, you can choose to ignore case, all dotall matches, and match at line breaks in the action menu.
+Finally, you can choose to ignore case, all dotall matches, match at line breaks and use secondary highlight color in the action menu.
 
 All preferences and regular expressions/groups will be saved and available on subsequent uses.
 
@@ -75,6 +75,12 @@ Licenses for this library have been included in the 'licenses' directory of this
 
 Changelog
 =========
+
+Version 1.0.1
+
+* Added a secondary highlight color option
+* Matched characters font color will dynamically adjusted from black to white based on your chosen highlight color's hue
+
 
 Version 1.0
 

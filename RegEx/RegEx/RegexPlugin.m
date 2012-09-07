@@ -16,6 +16,7 @@ NSString * const kPluginName = @"RegEx";
 @interface RegexPlugin ()
 {
     NSColorPanel *colorPanel;
+    NSInteger colorSelectionTag;
     CodaPlugInsController *controller;    
     NSIndexPath *selectedPatternToEdit;
     NSDictionary *textEditorAttributes;
@@ -26,9 +27,11 @@ NSString * const kPluginName = @"RegEx";
 @property (assign) BOOL allowDotall;
 @property (assign) BOOL allowCaseless;
 @property (assign) BOOL allowMultiline;
+@property (assign) BOOL useSecondaryHighlightColor;
 @property (copy) NSMutableArray *contents;
 @property (copy) NSFont *editorFont;
-@property (copy) NSColor *highlightColor;
+@property (copy) NSColor *primaryHighlightColor;
+@property (copy) NSColor *secondaryHighlightColor;
 @property (assign) NSInteger matchCount;
 @property (unsafe_unretained) IBOutlet NSTextField *matchLabel;
 @property (unsafe_unretained) IBOutlet NSOutlineView *outlineView;
@@ -52,14 +55,18 @@ CGFloat const kLeftViewMaxWidth = 350.0;
 CGFloat const kLeftViewMinWidth = 225.0;
 CGFloat const kDefaultFontSize = 12.0;
 
+NSInteger const kPrimaryColorTag = 1000;
+
 NSString * const kRegexLibraryKey = @"JDRegexPatternLibrary";
 NSString * const kRegexAllowsCaseless = @"JDRegexAllowsCaseless";
 NSString * const kRegexAllowsDotall = @"JDRegexAllowsDotall";
 NSString * const kRegexAllowsMultiline = @"JDRegexAllowsMultiline";
+NSString * const kRegexUseSecondaryHighlightColor = @"JDRegeUseSecondaryHighlightColor";
 NSString * const kRegexEditorFont = @"JDRegexEditorFont";
 NSString * const kRegexFieldPattern = @"JDRegexFieldPattern";
 NSString * const kRegexEditorText = @"JDRegexEditorText";
-NSString * const kRegexHighlightColor = @"JDRegexHighlightColor";
+NSString * const kRegexPrimaryHighlightColor = @"JDRegexPrimaryHighlightColor";
+NSString * const kRegexSecondaryHighlightColor = @"JDRegexSecondaryHighlightColor";
 
 NSString * const kDefaultFontName = @"Menlo";
 NSString * const kDefaultFieldPattern = @"\\w";
@@ -119,13 +126,14 @@ NSString * const kDefaultEditorText = @"The quick brown fox jumps over the lazy 
     [[self window] makeKeyAndOrderFront:self];
 }
 
-- (NSColor *)defaultHighlightColor
+- (NSColor *)defaultPrimaryHighlightColor
 {
-    static NSColor *kDefaultHighlightColor;
-    
-    kDefaultHighlightColor = [NSColor colorWithCalibratedRed:0.419 green:0.801 blue:0.994 alpha:1.000];
-    
-    return kDefaultHighlightColor;
+    return [NSColor colorWithCalibratedRed:0.764 green:1.000 blue:0.329 alpha:1.000];
+}
+
+- (NSColor *)defaultSecondaryHighlightColor
+{
+    return [NSColor colorWithCalibratedRed:0.419 green:0.801 blue:0.994 alpha:1.000];
 }
 
 - (void)addObservers
@@ -135,8 +143,10 @@ NSString * const kDefaultEditorText = @"The quick brown fox jumps over the lazy 
     [self addObserver:self forKeyPath:@"allowCaseless" options:NSKeyValueObservingOptionNew context:nil];
     [self addObserver:self forKeyPath:@"allowDotall" options:NSKeyValueObservingOptionNew context:nil];
     [self addObserver:self forKeyPath:@"allowMultiline" options:NSKeyValueObservingOptionNew context:nil];
+    [self addObserver:self forKeyPath:@"useSecondaryHighlightColor" options:NSKeyValueObservingOptionNew context:nil];    
     [self addObserver:self forKeyPath:@"editorFont" options:NSKeyValueObservingOptionNew context:nil];
-    [self addObserver:self forKeyPath:@"highlightColor" options:NSKeyValueObservingOptionNew context:nil];
+    [self addObserver:self forKeyPath:@"primaryHighlightColor" options:NSKeyValueObservingOptionNew context:nil];
+    [self addObserver:self forKeyPath:@"secondaryHighlightColor" options:NSKeyValueObservingOptionNew context:nil];    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editGroupOrPattern:) name:@"JDTreeControllerAddedGroup" object:nil];
 }
 
@@ -174,13 +184,16 @@ NSString * const kDefaultEditorText = @"The quick brown fox jumps over the lazy 
     else
     {
         NSData *fontData = [NSKeyedArchiver archivedDataWithRootObject:[self editorFont]];
-        NSData *highlightColorData = [NSKeyedArchiver archivedDataWithRootObject:[self highlightColor]];
+        NSData *primaryHighlightColorData = [NSKeyedArchiver archivedDataWithRootObject:[self primaryHighlightColor]];
+        NSData *secondaryHighlightColorData = [NSKeyedArchiver archivedDataWithRootObject:[self secondaryHighlightColor]];
         
         [defaults setBool:[self allowCaseless] forKey:kRegexAllowsCaseless];
         [defaults setBool:[self allowDotall] forKey:kRegexAllowsDotall];
         [defaults setBool:[self allowMultiline] forKey:kRegexAllowsMultiline];
+        [defaults setBool:[self useSecondaryHighlightColor] forKey:kRegexUseSecondaryHighlightColor];
         [defaults setObject:fontData forKey:kRegexEditorFont];
-        [defaults setObject:highlightColorData forKey:kRegexHighlightColor];
+        [defaults setObject:primaryHighlightColorData forKey:kRegexPrimaryHighlightColor];
+        [defaults setObject:secondaryHighlightColorData forKey:kRegexSecondaryHighlightColor];
         
         [self highlightMatchesWithRegex:[self constructRegularExpression]];
     }
@@ -198,10 +211,14 @@ NSString * const kDefaultEditorText = @"The quick brown fox jumps over the lazy 
     [self setAllowCaseless:[defaults boolForKey:kRegexAllowsCaseless]];
     [self setAllowDotall:[defaults boolForKey:kRegexAllowsDotall]];
     [self setAllowMultiline:[defaults boolForKey:kRegexAllowsMultiline]];
+    [self setUseSecondaryHighlightColor:[defaults boolForKey:kRegexUseSecondaryHighlightColor]];
     
-    [self setHighlightColor:[defaults objectForKey:kRegexHighlightColor] != nil
-     ? [NSKeyedUnarchiver unarchiveObjectWithData:[defaults objectForKey:kRegexHighlightColor]]
-                           : [self defaultHighlightColor]];
+    [self setPrimaryHighlightColor:[defaults objectForKey:kRegexPrimaryHighlightColor] != nil
+     ? [NSKeyedUnarchiver unarchiveObjectWithData:[defaults objectForKey:kRegexPrimaryHighlightColor]]
+                           : [self defaultPrimaryHighlightColor]];
+    [self setSecondaryHighlightColor:[defaults objectForKey:kRegexSecondaryHighlightColor] != nil
+     ? [NSKeyedUnarchiver unarchiveObjectWithData:[defaults objectForKey:kRegexSecondaryHighlightColor]]
+                                  : [self defaultSecondaryHighlightColor]];
     [self setEditorFont:[defaults objectForKey:kRegexEditorFont] != nil
      ? [NSKeyedUnarchiver unarchiveObjectWithData:[defaults objectForKey:kRegexEditorFont]]
                        : [NSFont fontWithName:kDefaultFontName size:kDefaultFontSize]];
@@ -433,7 +450,14 @@ NSString * const kDefaultEditorText = @"The quick brown fox jumps over the lazy 
 
 - (void)colorPanelColorDidChange:(NSNotification *)note
 {
-    [self setHighlightColor:[colorPanel color]];    
+    if (colorSelectionTag == kPrimaryColorTag)
+    {
+        [self setPrimaryHighlightColor:[colorPanel color]];
+    }
+    else
+    {
+        [self setSecondaryHighlightColor:[colorPanel color]];
+    }
 }
 
 - (void)colorPanelDidClose:(NSNotification *)note
@@ -448,8 +472,10 @@ NSString * const kDefaultEditorText = @"The quick brown fox jumps over the lazy 
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(colorPanelDidClose:) name:NSWindowWillCloseNotification object:nil];
     
+    colorSelectionTag = [sender tag];
+    
     colorPanel = [NSColorPanel sharedColorPanel];
-    [colorPanel setColor:[self highlightColor]];
+    [colorPanel setColor:colorSelectionTag == kPrimaryColorTag ? [self primaryHighlightColor] : [self secondaryHighlightColor]];
     [colorPanel setContinuous:YES];
     [colorPanel setMode:NSCrayonModeColorPanel];
     [colorPanel setShowsAlpha:NO];
@@ -499,11 +525,7 @@ NSString * const kDefaultEditorText = @"The quick brown fox jumps over the lazy 
 {
     [self setMatchCount:0];
     
-    textEditorAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                            [self highlightColor], NSBackgroundColorAttributeName,
-                            ([[self highlightColor] pc_isDarkColor] ? [NSColor whiteColor] : [NSColor blackColor]), NSForegroundColorAttributeName,
-                            nil];
-                                                    
+    __block NSInteger i = 0;                                                      
     NSMutableString *mutableString = [NSMutableString stringWithString:[[self textView] string]];
     NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:[[self textView] string]];
     
@@ -512,10 +534,22 @@ NSString * const kDefaultEditorText = @"The quick brown fox jumps over the lazy 
                                                                      const NSRange *capturedRanges,
                                                                      volatile BOOL *const stop)
      {
+         NSColor *highlightColor = [self primaryHighlightColor];
+         
+         if ([self useSecondaryHighlightColor])
+             highlightColor = i % 2 == 0 ? [self primaryHighlightColor] : [self secondaryHighlightColor];
+         
+         textEditorAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 highlightColor, NSBackgroundColorAttributeName,
+                                 ([highlightColor pc_isDarkColor] ? [NSColor whiteColor] : [NSColor blackColor]), NSForegroundColorAttributeName,
+                                 nil];
+        
          [attrString setAttributes:textEditorAttributes range:capturedRanges[0]];
          
          if (capturedRanges[0].length >= 1)
              [self setMatchCount:[self matchCount] + 1];
+         
+         i++;
      }];
     
     [[[self textView] textStorage] setAttributedString:attrString];
