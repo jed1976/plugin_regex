@@ -63,6 +63,16 @@ License
 RegEx is distributed under The MIT License (MIT). Please refer to 'LICENSE' file for more information.
 
 
+Credits
+=======
+
+RegEx makes use of the very excellent RegexKitLite library:
+
+RegexKitLite: Lightweight Objective-C Regular Expressions for Mac OS X using the ICU Library (http://regexkit.sourceforge.net/RegexKitLite/) BSD License
+
+Licenses for this library have been included in the 'licenses' directory of this distribution. 
+
+
 Changelog
 =========
 
