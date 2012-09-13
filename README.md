@@ -1,4 +1,4 @@
-RegEx 1.0.1
+RegEx 1.0.3
 ===========
 
 Hello. Thank you for downloading the RegEx plug-in for Coda 2.
@@ -75,6 +75,16 @@ Licenses for this library have been included in the 'licenses' directory of this
 
 Changelog
 =========
+
+Version 1.0.3
+
+* Fixed an issue where the insertion cursor would always move to the end of the line when matches were found. Thank you Mike Erickson for the find!
+
+
+Version 1.0.2
+
+* Fixed the non-saving issue for new RegEx patterns and groups
+
 
 Version 1.0.1
 

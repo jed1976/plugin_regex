@@ -120,7 +120,6 @@ NSString * const kDefaultEditorText = @"The quick brown fox jumps over the lazy 
     
     [self restoreDefaults];
     [self addObservers];
-    [self fetchData];
     [self configureUI];
     
     [[self window] makeKeyAndOrderFront:self];
@@ -179,7 +178,8 @@ NSString * const kDefaultEditorText = @"The quick brown fox jumps over the lazy 
     
     if ([keyPath isEqual:@"arrangedObjects"])
     {
-        [defaults setObject:[self contents] forKey:kRegexLibraryKey];
+        NSData *contentData = [NSKeyedArchiver archivedDataWithRootObject:[self contents]];
+        [defaults setObject:contentData forKey:kRegexLibraryKey];
     }
     else
     {
@@ -205,9 +205,23 @@ NSString * const kDefaultEditorText = @"The quick brown fox jumps over the lazy 
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    [self setContents:[defaults objectForKey:kRegexLibraryKey] != nil
-     ? [defaults objectForKey:kRegexLibraryKey]
-                     : [self fetchData]];
+    
+    if ([defaults objectForKey:kRegexLibraryKey] != nil)
+    {
+        if ([[defaults objectForKey:kRegexLibraryKey] isKindOfClass:[NSMutableArray class]])
+        {
+            [self setContents:[defaults objectForKey:kRegexLibraryKey]];
+        }
+        else
+        {
+            [self setContents:[NSKeyedUnarchiver unarchiveObjectWithData:[defaults objectForKey:kRegexLibraryKey]]];
+        }
+    }
+    else
+    {
+        [self setContents:[self fetchData]];
+    }
+
     [self setAllowCaseless:[defaults boolForKey:kRegexAllowsCaseless]];
     [self setAllowDotall:[defaults boolForKey:kRegexAllowsDotall]];
     [self setAllowMultiline:[defaults boolForKey:kRegexAllowsMultiline]];
@@ -298,7 +312,11 @@ NSString * const kDefaultEditorText = @"The quick brown fox jumps over the lazy 
 
 - (void)outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
 {
+    [[self treeController] willChangeValueForKey:@"arrangedObjects"];
+    
     [[item representedObject] setValue:object forKey:@"name"];
+    
+    [[self treeController] didChangeValueForKey:@"arrangedObjects"];
 }
 
 #pragma -
@@ -550,12 +568,16 @@ NSString * const kDefaultEditorText = @"The quick brown fox jumps over the lazy 
              [self setMatchCount:[self matchCount] + 1];
          
          i++;
-     }];
+    }];
+    
+    NSRange currentRange = [[self textView] selectedRange];
     
     [[[self textView] textStorage] setAttributedString:attrString];
     
     if ([self editorFont] != nil)
         [[[self textView] textStorage] setFont:[self editorFont]];
+    
+    [[self textView] setSelectedRange:currentRange];    
 }
 
 - (void)insertRegex:(id)sender
