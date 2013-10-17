@@ -131,7 +131,7 @@
     
     CGFloat startX = 6.0;
     
-    for (NSInteger i = 0; i < ((cellFrame.size.width - 16) / 4) + 10; i++)
+    for (NSInteger i = 0; i < ((cellFrame.size.width - 24) / 4) + 10; i++)
     {
         [NSBezierPath strokeLineFromPoint:NSMakePoint(startX , cellFrame.origin.y + cellFrame.size.height - 4.0) toPoint:NSMakePoint(startX + 2.0, cellFrame.origin.y + cellFrame.size.height - 6.0)];
 
@@ -167,7 +167,7 @@
     
     startX = 6.0;
     
-    for (NSInteger i = 0; i < ((cellFrame.size.width - 16) / 4) + 10; i++)
+    for (NSInteger i = 0; i < ((cellFrame.size.width - 24) / 4) + 10; i++)
     {
         [NSBezierPath strokeLineFromPoint:NSMakePoint(startX , cellFrame.origin.y + cellFrame.size.height - 3.0) toPoint:NSMakePoint(startX + 2.0, cellFrame.origin.y + cellFrame.size.height - 5.0)];
         
